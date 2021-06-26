@@ -3,13 +3,13 @@
 --dark: #33393f; 
 --light: #e866ec; 
 --gin: #e0eae4; 
---hightlight: #2aefcb; 
+--bright-turquoise: #2aefcb; 
 }
 
 /* TODO: set content highlight color and background */
 ::selection { 
-    background-color:var(--highlight);
-    color:var(--dark); 
+    background-color:var(--bright-turquoise);
+    color:v ar(--dark); 
 }
 
 html {
@@ -38,10 +38,10 @@ h3,
 h4,
 h5,
 h6 {
-    margin-bottom: 1.5rem;
+    margin-bottom: .625rem;
     color:var(--light); 
-    font-weight: bold; 
-    line-height:1.5; 
+    font-weight: 700; 
+    line-height: 1.5; 
 }
 
 h1 {
@@ -70,7 +70,7 @@ h6 {
 }
 
 p {
-  margin-top: 1.5rem; /*I added this line of code*/ 
+  /* margin-top: 1.5rem; I added this line of code*/ 
   margin-bottom: 1rem;
 }
 
@@ -135,8 +135,9 @@ footer {
   justify-content: flex-start; 
   min-height: 100%;
   padding: 2rem;
+  color: var(--light); 
   transition: all 0.5s ease-in-out;
-  outline:2px dashed white; 
+  outline:2px dashed var(--gin); 
   outline-offset: -2px; 
 }
 
@@ -145,22 +146,23 @@ footer {
   /* TODO: add padding, background color, color, border, border-radius */
   transition: all 0.5s ease-in-out;
   position: relative;  
-  margin: -4rem 0 -1.5rem 0; 
+  margin: -4rem 0 1.5rem 0; 
   background-color:var(--dark); 
   padding: 0.5rem 1rem;  
   color:var(--light); 
-  border: 2px solid white; 
+  border: 2px solid var(--gin); 
   border-radius: 8px; 
 }
 
 /* TODO: set an outer and inner box shadow on the card to create a glowing effect on hover */
-.code-card:hover, .code-card:hover, .card-header {
-  box-shadow: inset 0px 0px 8px var(--light), outset 0px 0px 8px var(--light);  
+.code-card:hover,
+.code-card:hover .card-header {
+  box-shadow: inset 0px 0px 8px var(--light), 0 0 15px var(--light);
 }
 
 /* TODO: set each card's code block to grow with flex-grow to the height of the largest code block on the page, making each card even in height */
 .code-card .code-block {
-    flex-grow: 3rem; 
+    flex-grow: 1; 
 }
 
 .code-card pre {
@@ -182,17 +184,21 @@ footer {
 
 /* TODO: on <pre> click, select all contents with user-select so the code is highlighted */
 .code-card pre:active {
-    background-color:var(--highlight); 
+    user-select: all; 
 }
 
 /* using a mobile-first approach, use `min-width` values going from narrow -> wide for a responsive design */
 @media screen and (min-width: 768px) {
   /* TODO: on tablets, set columns to only be 50% of the width and not grow */
   .card-column {
-      column-width:50%; 
+      flex:0 0 50%;
+      max-width: 50%;  
   }
 
   /* TODO: Select the last card-column child to grow to full width if it has space to grow */
+  .card-column > {
+    flex-grow: 1; 
+  }
 }
 
 /* media query for larger screens */
